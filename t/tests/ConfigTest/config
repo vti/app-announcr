@@ -1,0 +1,7 @@
+mailer      = Mailer/1.0
+from        = me@example.com
+log         = log
+signature   =
+    Haha
+    lala
+prefix      = [Prefix]

@@ -1,0 +1,45 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+
+use Getopt::Long;
+use Pod::Usage;
+
+use App::Announcr;
+use App::Announcr::Config;
+
+my $help;
+my $config;
+my $from;
+my $prefix;
+my $signature;
+my $signature_file;
+my $log;
+my $mailer;
+
+GetOptions(
+    'help|?'           => \$help,
+    'config=s'         => \$config,
+    'prefix=s'         => \$prefix,
+    'from=s'           => \$from,
+    'signature=s'      => \$signature,
+    'signature_file=s' => \$signature_file,
+    'log=s'            => \$log,
+    'mailer=s'         => \$mailer
+) or pod2usage(2);
+
+pod2usage(1) if $help || !@ARGV;
+
+my ($list, $message) = @ARGV;
+die "Usage: [OPTIONS] <list> <message>\n" unless $list && $message;
+
+App::Announcr->new(
+    config         => $config,
+    from           => $from,
+    prefix         => $prefix,
+    signature      => $signature,
+    signature_file => $signature_file,
+    log            => $log,
+    mailer         => $mailer
+)->run($list, $message);
