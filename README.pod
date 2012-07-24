@@ -8,7 +8,7 @@ App::Announcr
 
 L<App::Announcr> is a simple email announcer or newsletter sender. Having an
 already set up email server you can send announces using a provided email list.
-It remembers already sent email by writing to a log file.
+It remembers already sent emails by writing to a log file.
 
 =head1 FEATURES
 
@@ -36,6 +36,20 @@ It remembers already sent email by writing to a log file.
 =head1 USAGE
 
     announcr emails.csv message.txt --config config
+
+Where C<emails.csv> looks like:
+
+    email
+    foo@bar.com
+    bar@foo.com
+
+And C<message.txt>:
+
+    Subject: Out of BETA!
+
+    Dear friends!
+
+    My website is out of beta. Check it out!
 
 =head1 AUTHOR
 
