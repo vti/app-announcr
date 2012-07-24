@@ -1,0 +1,51 @@
+=pod
+
+=head1 NAME
+
+App::Announcr
+
+=head1 DESCRIPTION
+
+L<App::Announcr> is a simple email announcer or newsletter sender. Having an
+already set up email server you can send announces using a provided email list.
+It remembers already sent email by writing to a log file.
+
+=head1 FEATURES
+
+=over
+
+=item * configurable from file and command line options
+
+=item * subject prefix
+
+=item * message signature
+
+=back
+
+=head1 CONFIGURATION
+
+    mailer      = MyMailer/1.2345
+    from        = announcements-noreply@example.com
+    log         = log
+    signature   =
+        My project title
+        example.com
+        @twitter
+    prefix      = [MyWebsite]
+
+=head1 USAGE
+
+    announcr emails.csv message.txt --config config
+
+=head1 AUTHOR
+
+Viacheslav Tykhanovskyi, "vti@cpan.org".
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright (C) 2012, Viacheslav Tykhanovskyi
+
+This program is free software, you can redistribute it and/or modify it under
+the terms of the Artistic License version 2.0.
+
+=end
