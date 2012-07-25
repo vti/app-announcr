@@ -103,7 +103,7 @@ sub _build_message {
 
     if (my $description = $self->{description}) {
         $message->delete('List-Id');
-        $message->add('List-Id' => $description . ' ' . $self->{from});
+        $message->add('List-Id' => $description);
     }
 
     if (my $unsubscribe = $self->{unsubscribe}) {
