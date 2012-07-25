@@ -101,6 +101,16 @@ sub _build_message {
     $message->delete('X-Mailer');
     $message->add('X-Mailer' => $self->{mailer});
 
+    if (my $description = $self->{description}) {
+        $message->delete('List-Id');
+        $message->add('List-Id' => $description . ' ' . $self->{from});
+    }
+
+    if (my $unsubscribe = $self->{unsubscribe}) {
+        $message->delete('List-Unsubscribe');
+        $message->add('List-Unsubscribe' => $unsubscribe);
+    }
+
     return $message;
 }
 
