@@ -17,6 +17,7 @@ my $signature;
 my $signature_file;
 my $log;
 my $mailer;
+my $verbose;
 
 GetOptions(
     'help|?'           => \$help,
@@ -26,10 +27,9 @@ GetOptions(
     'signature=s'      => \$signature,
     'signature_file=s' => \$signature_file,
     'log=s'            => \$log,
-    'mailer=s'         => \$mailer
+    'mailer=s'         => \$mailer,
+    'verbose'          => \$verbose
 ) or pod2usage(2);
-
-pod2usage(1) if $help || !@ARGV;
 
 my ($list, $message) = @ARGV;
 die "Usage: [OPTIONS] <list> <message>\n" unless $list && $message;
@@ -41,5 +41,6 @@ App::Announcr->new(
     signature      => $signature,
     signature_file => $signature_file,
     log            => $log,
-    mailer         => $mailer
+    mailer         => $mailer,
+    verbose        => $verbose
 )->run($list, $message);

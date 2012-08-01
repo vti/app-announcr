@@ -58,6 +58,8 @@ sub run {
     while (my $row = $csv->getline_hr($fh)) {
         next if $self->_is_processed($row->{email});
 
+        warn "Sending message to '$row->{email}'\n" if $self->{verbose};
+
         my $message = $self->_build_message($row->{email}, $subject, $body);
         $self->_send_message($message);
 
@@ -67,6 +69,8 @@ sub run {
     close $fh;
 
     $self->_finalize_log;
+
+    warn "DONE\n" if $self->{verbose};
 }
 
 sub _is_processed {
@@ -140,6 +144,14 @@ sub _prepare_log {
                 last;
             }
         }
+
+    }
+
+    if (!$is_done) {
+        warn "Resuming from '$self->{log}'\n" if $self->{verbose};
+    }
+    else {
+        warn "Creating new log '$self->{log}'\n" if $self->{verbose};
     }
 
     my $mode = $is_done ? '>' : '>>';
@@ -155,6 +167,8 @@ sub _finalize_log {
 
     my $fh = $self->{log_fh};
     print $fh "DONE\n";
+
+    warn "Finalizing log\n" if $self->{verbose};
 }
 
 sub _log {
