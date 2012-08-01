@@ -19,7 +19,7 @@ sub load_config : Test {
     is_deeply(
         \%config,
         {   mailer    => 'Mailer/1.0',
-            signature => "Haha\nlala",
+            signature => "Haha\nlala\n\nthere",
             from      => 'me@example.com',
             log       => 'log',
             prefix    => '[Prefix]'

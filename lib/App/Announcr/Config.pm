@@ -27,7 +27,7 @@ sub load {
     while (defined(my $line = <$fh>)) {
         chomp $line;
 
-        if ($line =~ s/^\s+//) {
+        if ($line =~ s/(?:^\s+|^$)//) {
             $value .= "\n" if length $value;
             $value .= $line;
         }
