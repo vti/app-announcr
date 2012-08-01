@@ -184,7 +184,8 @@ sub _slurp {
     my ($file) = @_;
 
     local $/;
-    open my $fh, '<', $file or die "Can't open file '$file': $!";
+    open my $fh, '<:encoding(UTF-8)', $file
+      or die "Can't open file '$file': $!";
 
     return <$fh>;
 }
