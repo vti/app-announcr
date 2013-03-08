@@ -1,0 +1,6 @@
+mailer      = Mailer/1.0
+from        = me@example.com
+log         = log
+signature   =
+    привет
+prefix      = [Префикс]

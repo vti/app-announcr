@@ -23,7 +23,7 @@ sub load {
 
     my ($key, $value) = ('', '');
 
-    open my $fh, '<', $file or die "Can't open file '$file': $!";
+    open my $fh, '<:encoding(UTF-8)', $file or die "Can't open file '$file': $!";
     while (defined(my $line = <$fh>)) {
         chomp $line;
 
